@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IN3062 Project Ideas</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M18 8h28v14c0 9-6 15-14 15s-14-6-14-15z' fill='%23f5c542'/%3E%3Cpath d='M18 12H8c0 9 4 14 11 15M46 12h10c0 9-4 14-11 15' fill='none' stroke='%23f5c542' stroke-width='4' stroke-linecap='round'/%3E%3Crect x='28' y='37' width='8' height='9' fill='%23f5c542'/%3E%3Crect x='19' y='46' width='26' height='8' rx='2' fill='%23f5c542'/%3E%3Cpath d='M25 21l5 5 9-10' fill='none' stroke='%23000' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #000;
+    --surface: #0a0a0a;
+    --line: #262626;
+    --text: #ededed;
+    --muted: #a3a3a3;
+    --gold: #f5c542;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { background: var(--bg); color-scheme: dark; scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 56px 22px 80px; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; margin: 0 0 12px; font-weight: 700; letter-spacing: -0.01em; }
+  .intro { color: var(--muted); margin: 0 0 48px; font-size: 1.05rem; max-width: 56ch; }
+  article { border-top: 1px solid var(--line); padding: 32px 0; }
+  h2 { font-size: 1.6rem; margin: 0 0 4px; color: var(--gold); font-weight: 700; }
+  .tag { margin: 0 0 18px; color: var(--muted); font-size: 0.95rem; font-style: italic; }
+  p { margin: 0 0 14px; max-width: 68ch; }
+  dl { margin: 18px 0 0; display: grid; grid-template-columns: max-content 1fr; gap: 10px 20px; }
+  dt { color: var(--gold); font-weight: 700; }
+  dd { margin: 0; }
+  @media (max-width: 560px) {
+    dl { grid-template-columns: 1fr; gap: 2px; }
+    dd { margin-bottom: 12px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Project ideas</h1>
+  <p class="intro">Three candidate machine learning projects for the Intro to AI coursework, each framed as a supervised learning task with a clear baseline to beat.</p>
+
+  <article>
+    <h2>Steam</h2>
+    <p class="tag">Recommendation from how people actually play</p>
+    <p>Recommender systems that rely mainly on shared tags or genres can suggest games a user is unlikely to enjoy, because they ignore how the user actually plays. This project investigates whether combining user behaviour features (genre mix, log-scaled playtime, recency of play, and preference for older or newer titles) with game features (genre, tags, release age, review sentiment and price) predicts a user’s enjoyment of an unseen game more accurately than tag overlap alone.</p>
+    <dl>
+      <dt>Task</dt>
+      <dd>Binary classification of whether a user recommends a game, evaluated with AUC, F1 and Precision@10, using a time-based train/validation/test split.</dd>
+      <dt>H1</dt>
+      <dd>Multi-feature models outperform a tag-overlap baseline.</dd>
+      <dt>H2</dt>
+      <dd>Log-scaled playtime is a more reliable engagement signal than raw hours.</dd>
+      <dt>Supporting analysis</dt>
+      <dd>Clustering of users (k-means/GMM with PCA) to identify player types, and feature ablation to show which factors matter most.</dd>
+    </dl>
+  </article>
+
+  <article>
+    <h2>Anime</h2>
+    <p class="tag">Review text versus the score</p>
+    <p>Ratings are often inflated and clustered at the top of the scale, so a single numeric score says little about how much a viewer actually enjoyed a show. This project investigates whether the text of user reviews predicts a viewer’s enjoyment more accurately than a model using the overall score and metadata alone.</p>
+    <p>We frame this as a supervised learning task on MyAnimeList-style review data and compare text-based models from the module against a score-only baseline.</p>
+  </article>
+
+  <article>
+    <h2>Game Popularity</h2>
+    <p class="tag">Streaming coverage versus real player bases</p>
+    <p>Content creation can inflate or hide a game’s real popularity: some games dominate streaming while few people play them, and others have large player bases but little coverage. This project investigates whether a game’s player-base popularity over time can be predicted from content-creation metrics and game attributes, and whether the gap between predicted and actual popularity identifies games that are over- or under-represented in content.</p>
+    <p>We compare supervised models from the module against a simple baseline.</p>
+  </article>
+</main>
+</body>
+</html>
